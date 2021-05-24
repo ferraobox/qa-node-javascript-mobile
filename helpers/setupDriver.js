@@ -3,8 +3,8 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 //Set up driver
 const wd = require('wd'),
-	actions = require('./actions'),
-	serverConfigs = require('./appium-servers');
+  actions = require('./actions'),
+  serverConfigs = require('./appium-servers');
 //Add custom methos for components
 wd.addPromiseChainMethod('swipeTo', actions.swipeTo);
 wd.addPromiseChainMethod('moveToDownXpath', actions.moveToDownXpath);
@@ -34,13 +34,13 @@ wd.addPromiseChainMethod('moveToUpCss', actions.moveToUpCss);
 wd.addPromiseChainMethod('movePickerElement', actions.movePickerElement);
 
 if (process.env.OS === 'iOS') {
-	wd.addPromiseChainMethod('elementExistAccessibilityId', actions.elementExistAccessibilityId);
+  wd.addPromiseChainMethod('elementExistAccessibilityId', actions.elementExistAccessibilityId);
 } else {
-	wd.addPromiseChainMethod('tabElementId', actions.tabElementId);
-	wd.addPromiseChainMethod('tapAddress', actions.tapAddress);
-	wd.addPromiseChainMethod('moveToDownId', actions.moveToDownId);
-	wd.addPromiseChainMethod('moveToUpId', actions.moveToUpId);
-	wd.addPromiseChainMethod('elementExistId', actions.elementExistId);
+  wd.addPromiseChainMethod('tabElementId', actions.tabElementId);
+  wd.addPromiseChainMethod('tapAddress', actions.tapAddress);
+  wd.addPromiseChainMethod('moveToDownId', actions.moveToDownId);
+  wd.addPromiseChainMethod('moveToUpId', actions.moveToUpId);
+  wd.addPromiseChainMethod('elementExistId', actions.elementExistId);
 }
 //Set up asserts
 chai.use(chaiAsPromised);

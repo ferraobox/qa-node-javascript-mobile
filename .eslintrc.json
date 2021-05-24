@@ -1,18 +1,9 @@
 {
-  "env": {
-    "commonjs": true,
-    "node": true,
-    "jest/globals": true
-  },
+  "env": { "commonjs": true, "node": true, "jest/globals": true },
   "extends": ["plugin:jest/recommended"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly", "BalanceListPO": true, "DashboardPO": true, "NewOperationPO": true, "RightMenuPO": true },
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2019
-  },
+  "parserOptions": { "ecmaVersion": 2019 },
   "plugins": ["@typescript-eslint", "jest"],
   "rules": {
     "no-param-reassign": "warn",
@@ -34,6 +25,20 @@
     "no-await-in-loop": "warn",
     "camelcase": "off",
     "no-empty-function": "warn",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "indent": ["error", "tab"],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "no-var": "error",
+    "no-prototype-builtins": "off",
+    "require-await": "error",
+    "eslint no-octal": "off",
+    "no-octal-escape": "off",
+    "init-declarations": ["error", "always"],
+    "no-return-await": "error",
+    "no-return-assign": "error",
+    "no-useless-call": "error",
+    "prefer-const": "error"
   }
 }
