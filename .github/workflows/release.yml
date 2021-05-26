@@ -38,10 +38,10 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          # script: ./gradlew connectedCheck
-          run: while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
+          script: ./gradlew connectedCheck
       - name: Install dependences
         run: |
+          while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
           adb devices
           npm i 
           npm i appium
