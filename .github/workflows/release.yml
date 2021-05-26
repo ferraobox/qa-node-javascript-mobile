@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         api-level: [29]
-        target: [default, google_apis]
+        target: [default]
     steps:
       - name: Checkout code
         id: checkout
@@ -38,8 +38,8 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          script: ./gradlew connectedCheck
-          run: adb devices
+          # script: ./gradlew connectedCheck
+          run: while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
       - name: Install dependences
         run: |
           adb devices
