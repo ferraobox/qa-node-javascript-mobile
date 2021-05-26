@@ -35,12 +35,11 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          emulator-options: -no-snapshot -no-boot-anim
           script: |
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
             ./node_modules/.bin/appium --log-level error &
             adb devices
-            adb shell getprop ro.build.version.release
-            adb install ./app/com.monefy.apk
             npm run test:app
       - name: Upload reports
         if: ${{ always() }}
