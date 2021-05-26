@@ -41,8 +41,7 @@ jobs:
           script: |
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
             adb devices
-            ls
-            npm run test
+            npm run test:app
       - name: Upload reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
