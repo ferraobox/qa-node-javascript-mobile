@@ -6,7 +6,7 @@ name: Release
 # events but only for the master branch
 on:
   push:
-    branches: [nonreadyyet]
+    branches: [main]
   workflow_dispatch:
 env:
   ACT_NODE_VERSION: 14
@@ -14,7 +14,11 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [29]
+        target: [default, google_apis]
     steps:
       - name: Checkout code
         id: checkout
@@ -29,9 +33,12 @@ jobs:
           node-version: ${{env.ACT_NODE_VERSION}}
       - name: Install dependences
         run: |
-          npm i
+          adb devices
+          npm i 
+          npm i appium
       - name: Run test
         run: |
+          appium &> /dev/null
           npm run test
       - name: Upload reports
         if: ${{ always() }}

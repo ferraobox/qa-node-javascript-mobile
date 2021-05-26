@@ -2,7 +2,7 @@ exports.Android10 = {
   automationName: 'UiAutomator2',
   platformName: 'Android',
   platformVersion: '10',
-  deviceName: 'Android Emulator',
+  deviceName: 'Android10',
   app: `${process.env.PWD}/app/com.monefy.apk`,
   browserName: '',
   clearSystemFiles: true,

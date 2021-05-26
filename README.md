@@ -21,6 +21,19 @@
 
 Docker Desktop installed, Node 12 or higher and JDK with Android Platform tools.
 
+#### Create Android emulator on mac and run it without Android Studio
+
+```
+> brew install --cask adoptopenjdk8
+> brew install android-sdk
+> brew install --cask android-platform-tools
+> sdkmanager "system-images;android-29;google_apis_playstore;x86_64"
+> sdkmanager "build-tools;29.0.2"
+> sdkmanager --license
+> avdmanager create avd --name Android10  --package "system-images;android-29;google_apis_playstore;x86_64" --force --device "Nexus 6P"
+> /usr/local/Caskroom/android-sdk/${VERSION}/emulator/emulator -avd Android10
+```
+
 #### Example for Android
 
 This example is Oriented for Android Platform, but the good point is that you can use this framework for run the same code for Android or iOS platform
@@ -31,6 +44,13 @@ You should do the following steps:
 
 ```
 > npm i -g appium
+```
+
+You should intall this package to check if all of dependencies are installed:
+
+```
+> npm i -g appium-doctor
+> appium-doctor
 ```
 
 You need to have de Android Studio and generate a Android 10 emulator, then run it and check that is avilable with command:
