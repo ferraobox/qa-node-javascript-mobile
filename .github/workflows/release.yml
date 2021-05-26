@@ -31,14 +31,25 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{env.ACT_NODE_VERSION}}
+      - name: launch emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: x86_64
+          profile: Nexus 6
+          script: ./gradlew connectedCheck
+          run: adb devices
       - name: Install dependences
         run: |
           adb devices
           npm i 
           npm i appium
-      - name: Run test
+      - name: Run appium
         run: |
           appium &> /dev/null
+      - name: Run test
+        run: |
           npm run test
       - name: Upload reports
         if: ${{ always() }}
