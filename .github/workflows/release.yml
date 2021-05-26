@@ -50,7 +50,8 @@ jobs:
           path: |
             ./reports/coverage/lcov-report/
             ./reports/*.html
-      - name: Test & publish code coverage
+      - name: Publish code coverage
+        if: ${{ always() }}
         uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

@@ -1,3 +1,4 @@
+require('dotenv').config({ path: `${process.env.PWD}/env/.env` });
 //Make test hooks are executed before and after of each test, for hooks before the execution, you should go to mocha.prepare
 const makeTest = function (desc, cb) {
   describe(desc, () => {
@@ -38,10 +39,6 @@ const makeTest = function (desc, cb) {
 
 function getPageObjects(_path) {
   const fs = require('fs');
-
-  console.log(process.env);
-  console.log('*****************', process.env.PWD, process.env.OS);
-
   const basePath = `${process.env.PWD}/src/pageObjects/${process.env.OS}`;
   const path = _path || basePath;
 
