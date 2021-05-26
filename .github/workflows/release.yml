@@ -39,8 +39,8 @@ jobs:
         with:
           api-level: 29
           script: |
-          while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-          npm run test      
+            while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
+            npm run test
       - name: Upload reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
