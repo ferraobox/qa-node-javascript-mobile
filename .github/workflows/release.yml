@@ -27,22 +27,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{env.ACT_NODE_VERSION}}
-      - name: launch emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
       - name: Install dependences
         run: |
-          adb devices
           npm i 
           npm i appium
       - name: Run appium
         run: |
-          appium &> /dev/null
+          appium &
       - name: Run test
-        run: |
-          npm run test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+          while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
+          npm run test      
       - name: Upload reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
