@@ -36,14 +36,12 @@ jobs:
         with:
           api-level: 29
           script: |
-            kill -9 $(lsof -t -i:4723) || true
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-            ./node_modules/.bin/appium -p 4723 --log-level error & APPIUM_PID=$!
+            ./node_modules/.bin/appium -p 4723 --log-level error &
             adb devices
             adb install ./app/com.monefy.apk
             adb shell input keyevent 26
             npm run test:app
-            kill -9 $APPIUM_PID || true
       - name: Stop Appium
         if: ${{ always() }}
         run: |
