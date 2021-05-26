@@ -31,16 +31,15 @@ jobs:
         run: |
           npm i 
           npm i appium
-      - name: Run appium
-        run: |
-          ./node_modules/.bin/appium &
       - name: Run test
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: |
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
+            ./node_modules/.bin/appium &
             adb devices
+            adb shell getprop ro.build.version.release
             npm run test:app
       - name: Upload reports
         if: ${{ always() }}
