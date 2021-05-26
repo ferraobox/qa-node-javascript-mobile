@@ -37,10 +37,14 @@ jobs:
           api-level: 29
           emulator-options: -no-snapshot -no-boot-anim
           script: |
+            kill -9 $(lsof -t -i:4725) &> /dev/null
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-            ./node_modules/.bin/appium --log-level error &
+            ./node_modules/.bin/appium --log-level error & APPIUM_PID=$!
             adb devices
             npm run test:app
+            kill -9 $APPIUM_PID
+            sleep 3
+            kill -9 $(lsof -t -i:4725) &> /dev/null
       - name: Upload reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
