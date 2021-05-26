@@ -37,9 +37,10 @@ jobs:
           api-level: 29
           script: |
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-            ./node_modules/.bin/appium &
+            ./node_modules/.bin/appium --log-level error &
             adb devices
             adb shell getprop ro.build.version.release
+            adb install ./app/com.monefy.apk
             npm run test:app
       - name: Upload reports
         if: ${{ always() }}
