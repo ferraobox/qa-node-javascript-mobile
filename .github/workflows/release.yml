@@ -42,10 +42,9 @@ jobs:
             ./node_modules/.bin/appium -p 4725 --log-level error & APPIUM_PID=$!
             adb devices
             adb install ./app/com.monefy.apk
-            sleep 3
+            sleep 1
             adb shell input keyevent 26
             sleep 1
-            adb shell input swipe 200 500 200 0
             npm run test:app
             kill -9 $APPIUM_PID || true
       - name: Stop Appium
