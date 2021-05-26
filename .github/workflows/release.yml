@@ -35,7 +35,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          emulator-options: -no-snapshot-save -no-boot-anim
+          emulator-options: -no-snapshot-save -no-boot-anim -no-window -noaudio
           script: |
             kill -9 $(lsof -t -i:4723) || true
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
