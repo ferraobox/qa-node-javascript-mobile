@@ -35,16 +35,24 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          emulator-options: -no-snapshot -no-boot-anim
+          emulator-options: -no-snapshot-save -no-boot-anim
           script: |
             kill -9 $(lsof -t -i:4723) || true
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
             ./node_modules/.bin/appium -p 4725 --log-level error & APPIUM_PID=$!
             adb devices
+            adb install ./app/com.monefy.apk
+            sleep 3
+            adb shell input keyevent 26
+            sleep 1
+            adb shell input swipe 200 500 200 0
             npm run test:app
             kill -9 $APPIUM_PID || true
-            sleep 3
-            kill -9 $(lsof -t -i:4723) || true
+      - name: Stop Appium
+        if: ${{ always() }}
+        run: |
+          sleep 3
+          kill -9 $(lsof -t -i:4723) || true
       - name: Upload reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
