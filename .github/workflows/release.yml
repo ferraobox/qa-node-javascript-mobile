@@ -15,10 +15,6 @@ env:
 jobs:
   release:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [29]
-        target: [default]
     steps:
       - name: Checkout code
         id: checkout
@@ -34,10 +30,7 @@ jobs:
       - name: launch emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          profile: Nexus 6
+          api-level: 29
           script: ./gradlew connectedCheck
       - name: Install dependences
         run: |
