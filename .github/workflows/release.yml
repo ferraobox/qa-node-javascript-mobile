@@ -41,14 +41,12 @@ jobs:
             ./node_modules/.bin/appium -p 4723 --log-level error & APPIUM_PID=$!
             adb devices
             adb install ./app/com.monefy.apk
-            sleep 1
             adb shell input keyevent 26
             npm run test:app
             kill -9 $APPIUM_PID || true
       - name: Stop Appium
         if: ${{ always() }}
         run: |
-          sleep 3
           kill -9 $(lsof -t -i:4723) || true
       - name: Upload reports
         if: ${{ always() }}
