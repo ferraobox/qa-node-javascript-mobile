@@ -31,13 +31,15 @@ jobs:
         run: |
           npm i 
           npm i appium
+      - name: Start Appium
+        run: |
+          ./node_modules/.bin/appium -p 4723 --log-level error &
       - name: Run test
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: |
             while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-            ./node_modules/.bin/appium -p 4723 --log-level error &
             adb devices
             adb install ./app/com.monefy.apk
             adb shell input keyevent 26
