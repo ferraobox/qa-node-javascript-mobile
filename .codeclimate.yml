@@ -15,6 +15,12 @@ checks:
     enabled: true
     config:
       threshold: 5
+  similar-code:
+    enabled: true
+    config:
+      languages:
+        javascript:
+          mass_threshold: 65
 exclude_patterns:
   - 'src/test/'
   - 'src/pageObjects/'
