@@ -25,3 +25,4 @@ exclude_patterns:
   - '**/test/'
   - '**/pageObjects/'
   - '**/node_modules/'
+  - 'node_modules/'
