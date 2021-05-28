@@ -21,7 +21,7 @@ runTest('Test - Add new expense', function () {
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
-    expect(await NewOperationPO.elementDisplayedBy('Bills')).toBeTruthy();
+    expect(await NewOperationPO.categoryDisplayed('Bills')).toBeTruthy();
   });
 
   test('Click on "Bills" category - Dashboard is displayed', async function () {
@@ -31,13 +31,12 @@ runTest('Test - Add new expense', function () {
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
-    console.log(expensed);
     expect(expensed.includes('10.50')).toBeTruthy();
   });
 
   test('Click on New Expense', async function () {
     await DashboardPO.clickBy('expense_button');
-    expect(await DashboardPO.elementExist('one_button')).toBeTruthy();
+    expect(await NewOperationPO.elementExist('one_button')).toBeTruthy();
   });
 
   test('Mark 10.50', async function () {
@@ -51,7 +50,7 @@ runTest('Test - Add new expense', function () {
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
-    expect(await NewOperationPO.elementExist('Sports')).toBeTruthy();
+    expect(await NewOperationPO.categoryDisplayed('Sports')).toBeTruthy();
   });
 
   test('Click on "Sports" category - Dashboard is displayed', async function () {
@@ -61,7 +60,6 @@ runTest('Test - Add new expense', function () {
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
-    console.log(expensed);
     expect(expensed.includes('21.00')).toBeTruthy();
   });
 
@@ -79,7 +77,7 @@ runTest('Test - Add new expense', function () {
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
-    expect(await NewOperationPO.elementExist('Salary')).toBeTruthy();
+    expect(await NewOperationPO.categoryDisplayed('Salary')).toBeTruthy();
   });
 
   test('Click on "Salary" category - Dashboard is displayed', async function () {
@@ -90,7 +88,6 @@ runTest('Test - Add new expense', function () {
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
     const income = await DashboardPO.getAttributeBy('income_amount_text', 'text');
-    console.log(expensed, income);
     expect(expensed.includes('21.00')).toBeTruthy();
     expect(income.includes('300.00')).toBeTruthy();
   });
