@@ -11,6 +11,10 @@ checks:
     enabled: true
     config:
       threshold: 40
+  method-complexity:
+    enabled: true
+    config:
+      threshold: 5
 exclude_patterns:
   - 'src/test/'
   - 'src/pageObjects/'
