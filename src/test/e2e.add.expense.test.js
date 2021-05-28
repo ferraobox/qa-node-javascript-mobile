@@ -1,12 +1,13 @@
-const makeTest = require('../../helpers/setup').makeTest;
+const runTest = require('../../helpers/setup').runTest;
 
-makeTest('Test - Add new expense', function () {
+runTest('Test - Add new expense', function () {
   test('App load correctly', async function () {
-    await DashboardPO.elementExistBy('piegraph');
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Click on New Expense', async function () {
     await DashboardPO.clickBy('expense_button');
+    expect(await NewOperationPO.elementDisplayedBy('two_button')).toBeTruthy();
   });
 
   test('Mark 20.50', async function () {
@@ -15,22 +16,21 @@ makeTest('Test - Add new expense', function () {
     await NewOperationPO.clickBy('dot_button');
     await NewOperationPO.clickBy('five_button');
     await NewOperationPO.clickBy('cero_button');
+    expect(await NewOperationPO.elementDisplayedBy('choose_category')).toBeTruthy();
   });
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
+    expect(await NewOperationPO.elementDisplayedBy('Bills')).toBeTruthy();
   });
 
-  test('Click on "Bills" category', async function () {
+  test('Click on "Bills" category - Dashboard is displayed', async function () {
     await NewOperationPO.clickOnCategory('Bills');
-  });
-
-  test('Dashboard is displayed', async function () {
-    await DashboardPO.elementExistBy('piegraph');
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
-    console.log(expensed);
+    expect(expensed).toBe(true);
   });
 });

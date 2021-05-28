@@ -4,8 +4,6 @@ module.exports = class PageObjectAndroid extends PageObjectApp {
     super();
   }
 
-  // * Click element
-
   elementDisplayedBy(ele) {
     if (ele.includes('//')) return super.elementDisplayedByXPath(ele);
     else if (ele.includes('com.') || ele.includes(':id')) return super.elementDisplayedById(ele);
@@ -30,10 +28,8 @@ module.exports = class PageObjectAndroid extends PageObjectApp {
     else return super.getAttributeByAccessibilityId(ele, att);
   }
 
-  elementExistBy(ele) {
-    if (ele.includes('//')) return super.elementExistByXpath(ele);
-    else if (ele.includes('com.') || ele.includes(':id')) return super.elementExistById(ele);
-    else return super.elementExistByAccessibilityId(ele);
+  elementExist(ele, css) {
+    return super.exist(ele, css);
   }
 
   getElementsBy(ele) {
@@ -42,23 +38,12 @@ module.exports = class PageObjectAndroid extends PageObjectApp {
     else return super.getElementsByAccessibilityId(ele);
   }
 
-  checkElementExistBy(ele) {
-    if (ele.includes('//')) return super.checkElementExistByXPath(ele);
-    else if (ele.includes('com.') || ele.includes(':id')) return super.checkElementExistById(ele);
-    else return super.checkElementExistByAccessibilityId(ele);
-  }
-
   //move to methods
-
   moveToUp(ele) {
-    if (ele.includes('//')) return super.moveToUpXpath(ele);
-    else if (ele.includes('com.') || ele.includes(':id')) return super.moveToUpId(ele);
-    else return super.moveToUpToAid(ele);
+    return super.moveToUp(ele);
   }
   moveToDown(ele) {
-    if (ele.includes('//')) return super.moveToDownXpath(ele);
-    else if (ele.includes('com.') || ele.includes(':id')) return super.moveToDownId(ele);
-    else return super.moveToDownToAid(ele);
+    return super.moveToDown(ele);
   }
 
   // getElementSize

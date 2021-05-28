@@ -38,7 +38,7 @@ class NewOperationPO extends PageObjectAndroid {
 
   getAttributeBy = (ele, att) => super.getAttributeBy(this[ele], att);
 
-  elementExistBy = (ele) => super.elementExistBy(this[ele]);
+  elementExist = (ele) => super.elementExist(this[ele]);
 
   moveToUp = (ele) => super.moveToUp(this[ele]);
 

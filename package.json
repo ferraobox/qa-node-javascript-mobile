@@ -10,8 +10,7 @@
   "scripts": {
     "test:app": "jest --runInBand --forceExit",
     "test:app:debug": "jest src/test/*.test.ts --runInBand --detectOpenHandles --watch --verbose=false --silent=false",
-    "lint": "echo 'Linter passing'",
-    "lint2": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/eslint .",
     "update:eslinter": "node updateeslintrc.js",
     "bump": "npm version $VERSION --no-git-tag-version",
     "postbump": "git add package.json package-lock.json && git commit -m 'Bump version'",

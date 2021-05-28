@@ -1,12 +1,13 @@
-const makeTest = require('../../helpers/setup').makeTest;
+const runTest = require('../../helpers/setup').runTest;
 
-makeTest('Test - Add new expense', function () {
+runTest('Test - Add new expense', function () {
   test('App load correctly', async function () {
-    expect(await DashboardPO.elementExistBy('piegraph')).to.be.true;
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Click on New Expense', async function () {
     await DashboardPO.clickBy('expense_button');
+    expect(await NewOperationPO.elementDisplayedBy('one_button')).toBeTruthy();
   });
 
   test('Mark 10.50', async function () {
@@ -15,28 +16,28 @@ makeTest('Test - Add new expense', function () {
     await NewOperationPO.clickBy('dot_button');
     await NewOperationPO.clickBy('five_button');
     await NewOperationPO.clickBy('cero_button');
+    expect(await NewOperationPO.elementDisplayedBy('choose_category')).toBeTruthy();
   });
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
+    expect(await NewOperationPO.elementDisplayedBy('Bills')).toBeTruthy();
   });
 
-  test('Click on "Bills" category', async function () {
+  test('Click on "Bills" category - Dashboard is displayed', async function () {
     await NewOperationPO.clickOnCategory('Bills');
-  });
-
-  test('Dashboard is displayed', async function () {
-    expect(await DashboardPO.elementExistBy('piegraph')).to.be.true;
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
     console.log(expensed);
-    expect(expensed.includes('10.50'), 'Expense do not match').to.be.true;
+    expect(expensed.includes('10.50')).toBeTruthy();
   });
 
   test('Click on New Expense', async function () {
     await DashboardPO.clickBy('expense_button');
+    expect(await DashboardPO.elementExist('one_button')).toBeTruthy();
   });
 
   test('Mark 10.50', async function () {
@@ -45,65 +46,64 @@ makeTest('Test - Add new expense', function () {
     await NewOperationPO.clickBy('dot_button');
     await NewOperationPO.clickBy('five_button');
     await NewOperationPO.clickBy('cero_button');
+    expect(await NewOperationPO.elementExist('choose_category')).toBeTruthy();
   });
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
+    expect(await NewOperationPO.elementExist('Sports')).toBeTruthy();
   });
 
-  test('Click on "Sports" category', async function () {
+  test('Click on "Sports" category - Dashboard is displayed', async function () {
     await NewOperationPO.clickOnCategory('Sports');
-  });
-
-  test('Dashboard is displayed', async function () {
-    expect(await DashboardPO.elementExistBy('piegraph')).to.be.true;
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
     console.log(expensed);
-    expect(expensed.includes('21.00'), 'Expense do not match').to.be.true;
+    expect(expensed.includes('21.00')).toBeTruthy();
   });
 
   test('Click on New Income', async function () {
     await DashboardPO.clickBy('income_button');
+    expect(await NewOperationPO.elementExist('three_button')).toBeTruthy();
   });
 
   test('Mark 300', async function () {
     await NewOperationPO.clickBy('three_button');
     await NewOperationPO.clickBy('cero_button');
     await NewOperationPO.clickBy('cero_button');
+    expect(await NewOperationPO.elementExist('choose_category')).toBeTruthy();
   });
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
+    expect(await NewOperationPO.elementExist('Salary')).toBeTruthy();
   });
 
-  test('Click on "Salary" category', async function () {
+  test('Click on "Salary" category - Dashboard is displayed', async function () {
     await NewOperationPO.clickOnCategory('Salary');
-  });
-
-  test('Dashboard is displayed', async function () {
-    expect(await DashboardPO.elementExistBy('piegraph')).to.be.true;
+    expect(await DashboardPO.elementExist('piegraph')).toBeTruthy();
   });
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
     const income = await DashboardPO.getAttributeBy('income_amount_text', 'text');
     console.log(expensed, income);
-    expect(expensed.includes('21.00'), 'Expense do not match').to.be.true;
-    expect(income.includes('300.00'), 'Expense do not match').to.be.true;
+    expect(expensed.includes('21.00')).toBeTruthy();
+    expect(income.includes('300.00')).toBeTruthy();
   });
 
   test('Click on Balance button', async function () {
     await DashboardPO.clickBy('balance_amount');
     const settings = await RightMenuPO.getElementsBy('settings_imagebutton');
     if (settings.length > 0) await DashboardPO.clickBy('settings');
-    expect(await BalanceListPO.elementExistBy('balance_list'), 'Balance list not displayed').to.be.true;
+    expect(await BalanceListPO.elementExist('balance_list')).toBeTruthy();
   });
 
   test('Check all amount of list', async function () {
     const names = await BalanceListPO.getNameList();
-    expect(names.includes('Salary') && names.includes('Sports') && names.includes('Bills'), 'List not contains all elements').to.be.true;
+    expect(names.includes('Salary') && names.includes('Sports') && names.includes('Bills')).toBeTruthy();
   });
 });
