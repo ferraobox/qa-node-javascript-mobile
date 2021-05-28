@@ -40,9 +40,7 @@ class NewOperationPO extends PageObjectAndroid {
 
   elementExist = (ele) => super.elementExist(this[ele]);
 
-  moveToUp = (ele) => super.moveToUp(this[ele]);
-
-  moveToDown = (ele) => super.moveToDown(this[ele]);
+  moveTo = (ele) => super.moveTo(this[ele], dir);
 
   getElementsBy = (ele) => super.getElementsBy(this[ele]);
   /* #endregion */

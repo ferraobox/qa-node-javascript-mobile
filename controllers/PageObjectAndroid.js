@@ -39,11 +39,8 @@ module.exports = class PageObjectAndroid extends PageObjectApp {
   }
 
   //move to methods
-  moveToUp(ele) {
-    return super.moveToUp(ele);
-  }
-  moveToDown(ele) {
-    return super.moveToDown(ele);
+  moveTo(ele, dir) {
+    return super.moveTo(ele, dir);
   }
 
   // getElementSize

@@ -166,16 +166,9 @@ async function moveToAction(time, coordinates, ele) {
   }
 }
 
-exports.moveToDown = async function (ele) {
+exports.moveToElement = async function (ele, dir) {
   const { time, size } = await getMoveToContext();
-  const coordinates = getCoordinates(size, 'down');
-  await moveToAction(time, coordinates, ele);
-  return this;
-};
-
-exports.moveToUp = async function (ele) {
-  const { time, size } = await getMoveToContext();
-  const coordinates = getCoordinates(size, 'up');
+  const coordinates = getCoordinates(size, dir);
   await moveToAction(time, coordinates, ele);
   return this;
 };

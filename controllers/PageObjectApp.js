@@ -30,13 +30,8 @@ module.exports = class PageObjectApp {
   }
 
   // Move to down
-  moveToDown(ele) {
-    return driver.moveToDown(ele);
-  }
-
-  // Move to up
-  moveToUp(ele) {
-    return driver.moveToUp(ele);
+  moveTo(ele, dir) {
+    return driver.moveToElement(ele, dir);
   }
 
   moveToExecuteUP() {
