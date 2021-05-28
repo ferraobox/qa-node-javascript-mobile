@@ -51,6 +51,11 @@ class NewOperationPO extends PageObjectAndroid {
     const category_selector = `//android.widget.TextView[@text="${category}"]`;
     return super.clickBy(category_selector);
   }
+
+  categoryDisplayed(category) {
+    const category_selector = `//android.widget.TextView[@text="${category}"]`;
+    return super.elementDisplayedBy(category_selector);
+  }
 }
 
 module.exports = new NewOperationPO();

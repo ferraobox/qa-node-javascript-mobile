@@ -28,7 +28,7 @@ wd.addPromiseChainMethod('signature', actions.signature);
 //Set up asserts
 chai.use(chaiAsPromised);
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
-global.expect = chai.expect;
+// global.expect = chai.expect;
 //Configure driver
 const driver = wd.promiseChainRemote(serverConfigs[process.env.OS]);
 if (process.env.DEBUG_CONSOLE === 'true') require('./logging').configure(driver);

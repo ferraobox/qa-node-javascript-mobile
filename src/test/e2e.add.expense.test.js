@@ -21,7 +21,7 @@ runTest('Test - Add new expense', function () {
 
   test('Click on choose category', async function () {
     await NewOperationPO.clickBy('choose_category');
-    expect(await NewOperationPO.elementDisplayedBy('Bills')).toBeTruthy();
+    expect(await NewOperationPO.categoryDisplayed('Bills')).toBeTruthy();
   });
 
   test('Click on "Bills" category - Dashboard is displayed', async function () {
@@ -31,6 +31,6 @@ runTest('Test - Add new expense', function () {
 
   test('Get total expensed', async function () {
     const expensed = await DashboardPO.getAttributeBy('expense_amount_text', 'text');
-    expect(expensed).toBe(true);
+    expect(expensed).toBe('£20.50');
   });
 });
