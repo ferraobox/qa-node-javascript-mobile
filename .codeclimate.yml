@@ -21,8 +21,3 @@ checks:
       languages:
         javascript:
           mass_threshold: 65
-exclude_patterns:
-  - '**/test/'
-  - '**/pageObjects/'
-  - '**/node_modules/'
-  - 'node_modules/'
