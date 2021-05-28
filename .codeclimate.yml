@@ -22,6 +22,6 @@ checks:
         javascript:
           mass_threshold: 65
 exclude_patterns:
-  - 'src/test/'
-  - 'src/pageObjects/'
-  - 'node_modules/'
+  - '**/test/'
+  - '**/pageObjects/'
+  - '**/node_modules/'
