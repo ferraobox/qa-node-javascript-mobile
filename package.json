@@ -1,6 +1,6 @@
 {
   "name": "qa-node-typescript-backend",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Appium mobile test",
   "main": "index.js",
   "repository": {
