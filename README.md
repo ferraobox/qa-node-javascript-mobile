@@ -13,7 +13,16 @@
 
 ### CI result - [![CI - Test](https://github.com/ferraobox/qa-node-javascript-mobile/actions/workflows/release.yml/badge.svg)](https://github.com/ferraobox/qa-node-javascript-mobile/actions/workflows/release.yml)
 
-### Code Climate - ![Code Climate coverage](https://img.shields.io/codeclimate/coverage/ferraobox/qa-node-javascript-mobile)
+#### Code Climate
+
+<a href="https://codeclimate.com/github/ferraobox/qa-node-typescript-backend/maintainability"><img src="https://api.codeclimate.com/v1/badges/5a082c37dea0dd86f4a6/maintainability" /></a>
+<a href="https://codeclimate.com/github/ferraobox/qa-node-typescript-backend/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5a082c37dea0dd86f4a6/test_coverage" /></a>
+
+#### Requirements Coverage
+
+A good point is calculate Requirements coverage, if you define all use cases into Page Objects you can calculate if your test are passing throw all logic (As in UNIT tests with code climate but with UI e2e tests as well).
+
+![Use cases coverage](https://img.shields.io/codeclimate/coverage/ferraobox/qa-node-javascript-mobile)
 
 # QA NodeJs Javascript Mobile
 

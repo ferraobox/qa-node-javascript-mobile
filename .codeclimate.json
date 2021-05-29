@@ -32,14 +32,7 @@
       }
     },
     "similar-code": {
-      "enabled": true,
-      "config": {
-        "languages": {
-          "javascript": {
-            "mass_threshold": 65
-          }
-        }
-      }
+      "enabled": false
     }
   },
   "plugins": {
@@ -47,19 +40,5 @@
       "enabled": true
     }
   },
-  "exclude_patterns": [
-    "config/",
-    "db/",
-    "dist/",
-    "features/",
-    "**/node_modules/",
-    "script/",
-    "**/spec/",
-    "**/test/",
-    "**/tests/",
-    "**/vendor/",
-    "**/*.d.ts",
-    "src/test/",
-    "node_modules/"
-  ]
+  "exclude_patterns": ["config/", "features/", "**/node_modules/", "script/", "**/spec/", "**/test/", "**/tests/", "**/vendor/", "src/test/", "node_modules/"]
 }

@@ -23,14 +23,10 @@ exports.getWebElement = function (selector) {
   else return this.elementByAccessibilityId(selector);
 };
 
-exports.addPhotosToDevice = function (photoPath, namePhoto) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(photoPath, 'base64', (err, data) => {
-      if (err) reject(err); // Fail if the file can't be read.
-      const pathfle = process.env.OS === 'Android' ? `./sdcard/Download/${namePhoto}` : namePhoto;
-      this.pushFileToDevice(pathfle, data).then(() => resolve(this));
-    });
-  });
+exports.addPhotosToDevice = async function (photoPath, namePhoto) {
+  const fileData = await fs.readFileSync(photoPath, 'base64');
+  const pathfle = process.env.OS === 'Android' ? `./sdcard/Download/${namePhoto}` : namePhoto;
+  return this.pushFileToDevice(pathfle, fileData);
 };
 
 exports.clean = async function (selector) {
