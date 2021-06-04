@@ -40,5 +40,18 @@
       "enabled": true
     }
   },
-  "exclude_patterns": ["config/", "features/", "**/node_modules/", "script/", "**/spec/", "**/test/", "**/tests/", "**/vendor/", "src/test/", "node_modules/"]
+  "exclude_patterns": [
+    "config/",
+    "features/",
+    "**/node_modules/",
+    "script/",
+    "**/spec/",
+    "**/test/",
+    "**/tests/",
+    "**/vendor/",
+    "src/test/",
+    "node_modules/",
+    "reports/",
+    "**/reports/"
+  ]
 }

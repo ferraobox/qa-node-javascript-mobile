@@ -1,5 +1,5 @@
 {
-  "name": "qa-node-typescript-backend",
+  "name": "qa-node-javascript-backend",
   "version": "0.7.0",
   "description": "Appium mobile test",
   "main": "index.js",

@@ -31,6 +31,9 @@ jobs:
         run: |
           npm i 
           npm i appium
+      - name: Run ESLINT
+        run: |
+          npm run lint
       - name: Start Appium
         run: |
           ./node_modules/.bin/appium -p 4723 --log-level error &
@@ -56,7 +59,7 @@ jobs:
           path: |
             ./reports/coverage/lcov-report/
             ./reports/*.html
-      - name: Publish code coverage
+      - name: Code coverage
         if: ${{ always() }}
         uses: paambaati/codeclimate-action@v2.7.5
         env:
@@ -72,12 +75,12 @@ jobs:
           default_bump: minor
           release_branches: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: print tag
+      - name: Print tag
         run: echo ${{ steps.create_tag.outputs.new_tag }}
-      - name: get commit message
+      - name: Get commit message
         run: |
           echo ::set-env name=COMMIT_MSG::$(git log --format=%B -n 1 ${{ github.event.after }})
-      - name: show commit message
+      - name: Show commit message
         run: |
           echo * Last commit: ${{ env.COMMIT_MSG }}
       - name: Create Release

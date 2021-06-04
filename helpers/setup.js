@@ -1,6 +1,7 @@
 require('dotenv').config({ path: `${process.env.PWD}/env/.env` });
 //Make test hooks are executed before and after of each test, for hooks before the execution, you should go to mocha.prepare
 const runTest = function (desc, cb) {
+  // eslint-disable-next-line jest/valid-title
   describe(desc, () => {
     beforeAll(function () {
       //Setup Driver
