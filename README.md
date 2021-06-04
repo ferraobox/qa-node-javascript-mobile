@@ -91,3 +91,5 @@ The reports are located on reports folder into api project.
 ### Tech solution:
 
 I've used appium and javascrip because is a useful, fast, and an easy way to develop android test without Android estudio environmnet since is an open source framework.
+
+This solution is a good decision if yo have a QA automation team dedicated for working with a multiplatform tool.
